@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Avatar from "./Avatar";
+import avatarData from "./AvatarData";
+import "./styles.css";
 
-function App() {
+function Card({ children, title }) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="card">
+      <div className="card-content">
+        <h1>{title}</h1>
+        {children}
+      </div>
     </div>
   );
 }
 
-export default App;
+export default function Profile() {
+  return (
+    <div>
+      <Card title="Photo">
+        <Avatar
+          className={avatarData.className}
+          src={avatarData.src}
+          alt={avatarData.alt}
+          size={avatarData.size}
+        />
+      </Card>
+      <Card title="About">
+        <p>
+          Aklilu Lemma was a distinguished Ethiopian scientist who discovered a
+          natural treatment to schistosomiasis.
+        </p>
+      </Card>
+    </div>
+  );
+}
